@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: sa
+    #driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  
+  # Enabling H2 Console Configuration
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+      
+    
+  batch:
+    jdbc:
+      #batch se related  agar kuch configurations
+      #spring-batch requires some table like 'boot_work_batch_job' and more to be created before running spring-batch.
+      #either we create these tables or pass below property to initialize the schema automatically by spring boot.
+      initialize-schema: ALWAYS
+    job:
+      #by-default: spring batch job trigger automatically. We want to trigger buy our-self.
+      enabled: false
+server:
+  port: 8095
+  servlet: 
+    context-path: /spring-batch
+    
