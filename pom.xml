@@ -288,5 +288,6 @@
 	</build>
 	<modules>
 		<module>spring-batch</module>
+		<module>spring-security</module>
 	</modules>
 </project>
